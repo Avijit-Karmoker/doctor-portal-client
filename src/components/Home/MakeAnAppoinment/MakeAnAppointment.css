@@ -1,0 +1,42 @@
+.make-appointment{
+    background-image: url(../../../images/appointmentbg.png);
+    background-repeat: no-repeat;
+    background-size:  cover;
+    position: relative;
+    height: 591px;
+    background-position: center center;
+    align-items: center;
+}
+
+.make-appointment::before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #41485c;
+    opacity: .9;
+    top: 0;
+}
+
+.make-appointment img{
+    height: 741px;
+    transform: translateY(-150px);
+}
+
+.appointment-text{
+    z-index: 1;
+    margin-top: 4%;
+}
+
+.appointment-text h1{
+    font-size: 50px;
+}
+
+.appointment-text p{
+    font-size: 20px;
+}
+
+.appointment-img{
+    height: 591px;
+}

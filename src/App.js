@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Home from "./components/Home/Home/Home";
+import Appointment from "./components/Appointment/Appointment/Appointment";
+import Login from "./components/Login/Login/Login";
+import { createContext, useState } from "react";
+import MainDashboard from "./components/Dashboard/MainDashboard/MainDashboard";
+import AppointmentDataTable from "./components/Dashboard/AppointmentDataTable/AppointmentDataTable";
+import Prescriptions from "./components/Dashboard/Prescriptions/Prescriptions";
+import AddDoctor from "./components/Dashboard/AddDoctor/AddDoctor";
+import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
+
+export const UserContext = createContext();
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Home></Home>
+          </Route>
+          <Route path="/appointment">
+            <Appointment></Appointment>
+          </Route>
+          <Route path="/login">
+            <Login></Login>
+          </Route>
+          <PrivateRoute path="/dashboard">
+            <MainDashboard></MainDashboard>
+          </PrivateRoute>
+          <Route path="/doctor/patients">
+            <AppointmentDataTable></AppointmentDataTable>
+          </Route>
+          <Route path="/doctor/prescriptions">
+            <Prescriptions></Prescriptions>
+          </Route>
+          <Route path="/addDoctor">
+            <AddDoctor></AddDoctor>
+          </Route>
+        </Switch>
+      </Router>
+    </UserContext.Provider>
   );
 }
 

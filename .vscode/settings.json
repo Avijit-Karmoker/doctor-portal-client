@@ -1,0 +1,10 @@
+{
+    "editor.fontFamily": "cascadia code",
+    "editor.fontSize": 20,
+    "editor.wordWrap": "on",
+    "diffEditor.wordWrap": "on",
+    "editor.inlineHints.fontFamily": "cascadia code",
+    "eslint.rules.customizations": [
+    
+    ]
+}
